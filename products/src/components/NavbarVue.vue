@@ -2,7 +2,9 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark p-md-2">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+          <img src="../assets/logogeo.svg" class="img-fluid">
+        </a>
         <div class="container">
         <button
           class="navbar-toggler"

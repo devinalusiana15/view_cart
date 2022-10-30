@@ -12,8 +12,8 @@
         <div class="container">
           <ul class="list-group list-group-flush">
             <li class="list-group-item" style="background-color: #fbf2bf">
-            <img class="img-1" src="../src/assets/Rectangle13.svg">
-            <img class="img-2" src="../src/assets/Vector.svg" style="background-color:#59cfd7">
+            <img class="img-fluid " id ="img-1" src="../src/assets/Rectangle13.svg">
+            <img class="img-fluid " id ="img-2" src="../src/assets/Vector.svg" style="background-color:#59cfd7">
             </li>
           </ul>
         </div>
@@ -63,50 +63,17 @@
 
 <script>
 import NavbarVue from "./components/NavbarVue";
-import Axios from "axios";
+/* import Axios from "axios"; */
 import CarouselVue from "./components/CarouselVue.vue";
 
-const todoUrl = "http://localhost:3500/todo";
 export default {
   data() {
     return {
-      todoList: [],
-      todoItem: {},
-      editMode: false,
     };
   },
   components: {
     NavbarVue: NavbarVue,
     CarouselVue: CarouselVue,
-  },
-  methods: {
-    handleEdit(id) {
-      this.editMode = true;
-      this.todoItem = this.todoList.find((item) => item.id == id);
-    },
-    handleCancel() {
-      this.editMode = false;
-      this.todoItem = "";
-    },
-    async handleToDoItem() {
-      const id = this.todoItem.id;
-      if (this.editMode) {
-        await Axios.put(`${todoUrl}/${id}`, this.todoItem);
-        this.editMode = false;
-        this.todoItem.content = "";
-      } else {
-        await Axios.post(todoUrl, this.todoItem);
-        this.todoItem.content = "";
-      }
-      Axios.get(todoUrl).then((response) => (this.todoList = response.data));
-    },
-    async handleDelete(id) {
-      await Axios.delete(`${todoUrl}/${id}`);
-      Axios.get(todoUrl).then((response) => (this.todoList = response.data));
-    },
-  },
-  created() {
-    Axios.get(todoUrl).then((response) => (this.todoList = response.data));
   },
 };
 </script>
@@ -139,11 +106,11 @@ ul {
   width: 60%;
   background-color: #fbf2bf;
 }
-.img-1 {
+#img-1 {
   position: relative;
 }
 
-.img-2 {
+#img-2 {
   position: relative;
   z-index: 1;
   /* left: -25px; */
